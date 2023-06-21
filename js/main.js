@@ -1,5 +1,5 @@
 var myImage = document.querySelector('img');
-var images = ['img/Form111.png', 'img/Form112.png','img/form3.png','img/Form114.png'];
+var images = ['img/Form111.png', 'img/Form112.png', 'img/Form3.png', 'img/Form114.png'];
 var currentIndex = 0;
 
 myImage.onclick = function() {
@@ -7,13 +7,16 @@ myImage.onclick = function() {
   myImage.setAttribute('src', images[currentIndex]);
 };
 
-
 var myHeading = document.querySelector('h2');
 
 function setUserName() {
   var myName = prompt('Как вас зовут?');
   sessionStorage.setItem('name', myName);
-  myHeading.textContent = 'Здравствуйте, ' + myName + '!';
+  if (myName === null || myName === '') {
+    myHeading.textContent = 'Здравствуйте, Пользователь!';
+  } else {
+    myHeading.textContent = 'Здравствуйте, ' + myName + '!';
+  }
 }
 
 if (!sessionStorage.getItem('name')) {
@@ -22,4 +25,5 @@ if (!sessionStorage.getItem('name')) {
   var storedName = sessionStorage.getItem('name');
   myHeading.textContent = 'Здравствуйте, ' + storedName + '!';
 }
-alert("Автор не несет ответсвенность за моральный/психологический ущерб нанесенный данный оформлением.");
+
+alert("Автор не несет ответственность за моральный/психологический ущерб, нанесенный данным оформлением.");
